@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+    <div class="container">
+        <a class="navbar-brand pb-3">
+            <!-- <img src="assets/freshcart-logo.svg" class="w-100" alt="FreshCart-Logo" [routerLink]="['/home']"> -->
+            <i class="fas fa-cart-shopping fa-2x text-main"></i>
+            <span class="h3 fw-bolder">FreshCart</span>
+        </a>
+        <button class="navbar-toggler bg-main" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul *ngIf="isLogin" class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active-Link">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/products']" routerLinkActive="active-Link">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/categories']" routerLinkActive="active-Link">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/Brands']" routerLinkActive="active-Link">Brands</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cart']" routerLinkActive="active-Link">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/wishList']" routerLinkActive="active-Link">WishList</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/allorders']" routerLinkActive="active-Link">MyOrders</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+
+                <li class="nav-item ">
+                    <i class="fa-brands fa-facebook-f me-2 cursor-pointer" style="color: #0866FF;"></i>
+                    <i class="fa-brands fa-twitter me-2  cursor-pointer" style="color: #55ADEC;"></i>
+                    <i class=" fa-brands fa-linkedin-in me-2 cursor-pointer" style="color: #2766B1;"></i>
+                    <i class="fa-brands fa-youtube me-2 cursor-pointer" style="color: #F60D03;"></i>
+                    <i class="fa-brands fa-github me-2 cursor-pointer" style="color: #000000;"></i>
+
+                </li>
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active-Link">LogIn</a>
+                </li>
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active-Link">Register</a>
+                </li>
+
+                <li *ngIf="isLogin" class="nav-item">
+                    <a [routerLink]="['/cart']" class="nav-link cursor-pointer position-relative me-4">
+                        <i class="fa fa-cart-shopping text-main fa-xl p-2 mt-3"></i>
+                        <span class="badge bg-main text-white position-absolute top-0 end-0">{{number_Items}}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown" *ngIf="isLogin">
+                    <i class="nav-link dropdown-toggle fas fa-gear text-main fa-xl" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <li *ngIf="isLogin"><a class="dropdown-item cursor-pointer" [routerLink]="['/changepassword']"
+                                routerLinkActive="active-Link">Change Password</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li (click)="logOut()" *ngIf="isLogin" class="nav-item">
+                            <a class="nav-link cursor-pointer dropdown-item" routerLinkActive="active-Link">LogOut</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

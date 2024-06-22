@@ -1,0 +1,45 @@
+<app-loader *ngIf="isDataarrive"></app-loader>
+
+<div *ngIf="errorMessage && CartList.length==0" class="alert alert-danger text-center my-5 py-5">
+    <p class="my-5 h3 fw-bolder">{{errorMessage}}</p>
+</div>
+<div *ngIf="!errorMessage && CartList.length>0">
+    <div class="d-flex justify-content-between my-4">
+        <p class="text-main">
+            <span class="fw-bolder">Number Of Cart Items</span>: {{numberofCartItems}}
+        </p>
+        <p class="text-main">
+            <span class="fw-bolder">ToTal Price</span>:{{Totalprice}}
+        </p>
+    </div>
+    <button class="btn btn-outline-danger d-block ms-auto mb-4" (click)=" clearCart()">Clear Cart</button>
+
+    <div class="row my-5 shadow py-2" *ngFor="let cartitem of CartList">
+        <div class="col-md-1">
+            <img [src]="cartitem.product.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between align-items-center">
+            <div>
+                <h4>{{cartitem.product.title}}</h4>
+                <p>price :{{cartitem.price}} </p>
+                <span class="cursor-pointer" (click)="RemoveSpacificProduct(cartitem.product.id)">
+                    Remove Product
+                    <i class="text-danger fas fa-trash"></i>
+
+                </span>
+            </div>
+            <div>
+                <button [disabled]="cartitem.count<1" (click)=" UpdateCartProduct(cartitem.product.id,cartitem.count-1)"
+                    class=" btn bg-main text-white">-</button>
+                <span class="p-3">{{cartitem.count}}</span>
+                <button [disabled]="cartitem.count==cartitem.product.quantity"
+                    (click)="UpdateCartProduct(cartitem.product.id,cartitem.count+1)" class=" btn bg-main text-white">
+                    +</button>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn bg-main ms-auto d-block my-4 text-white" [routerLink]="['/Shippinaddress',cartid]"> Buy
+        Now: <img src="assets/visa-1.svg" class="w-25" alt=""></button>
+</div>

@@ -1,0 +1,20 @@
+<div class="my-5 w-75 mx-auto shadow p-3 rounded" style="background-image: url('assets/light-patten.svg');">
+    <form action="" [formGroup]="ShippingAddress" (ngSubmit)="submitShippingAddress(ShippingAddress)">
+        <div class="mb-3">
+            <label for="">Details:</label>
+            <input formControlName="details" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="">Phone:</label>
+            <input formControlName="phone" type="tel" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="">City:</label>
+            <input formControlName="city" type="text" class="form-control">
+        </div>
+        <button class="btn bg-main text-white d-block ms-auto">
+            <span *ngIf="!isDataRecived">Buy</span>
+            <i *ngIf="isDataRecived" class="fas fa-spin fa-spinner"></i>
+        </button>
+    </form>
+</div>

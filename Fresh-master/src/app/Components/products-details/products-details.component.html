@@ -1,0 +1,28 @@
+<app-loader *ngIf="isDataarrive"></app-loader>
+
+
+<div class="row align-items-center my-5">
+    <div class="col-md-4">
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let Product of ProductDetails?.images">
+                <ng-template carouselSlide [id]="ProductDetails?._id">
+                    <img [src]="Product" [alt]="ProductDetails?.name" [title]="ProductDetails?.name"
+                        class="w-100 imgsize">
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+    <div class="col-md-8">
+        <h2>{{ProductDetails?.title}}</h2>
+        <p>{{ProductDetails?.description}}</p>
+        <span class="font-sm text-muted">{{ProductDetails?.category.name}}</span>
+        <div class="d-flex align-items-center justify-content-between">
+            <span class="font-sm ">{{ProductDetails?.price}}.EGP</span>
+            <div>
+                <i class="fa-solid fa-star rating-color"></i>
+                <span class="font-sm"> {{ProductDetails?.ratingsAverage}}</span>
+            </div>
+        </div>
+        <button (click)=" addToCart(ProductDetails?._id)" class="btn bg-main text-white w-100 my-2">+ Add</button>
+    </div>
+</div>

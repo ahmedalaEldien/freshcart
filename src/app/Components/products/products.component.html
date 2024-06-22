@@ -1,0 +1,26 @@
+<app-loader *ngIf="isDataarrive"></app-loader>
+
+<div class="w-75 mx-auto my-4">
+    <input [(ngModel)]="searchTerm" type="text" class="form-control " placeholder=" Search...................">
+</div>
+
+<section class="py-5">
+    <div class="row g-4">
+        <div class="col-md-3 " *ngFor="let product of productsList|search:searchTerm">
+            <div class="product p-3" [routerLink]="['/Productdetails',product._id]">
+                <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                <h4 class="text-main font-sm">{{product.category.name}}</h4>
+                <h3 class="h6 fw-semibold">{{product.title.split(' ').slice(0,2).join(' ')}}</h3>
+                <div class="d-flex align-items-center justify-content-between">
+                    <span class="font-sm ">{{product.price}}.EGP</span>
+                    <div>
+                        <i class="fa-solid fa-star rating-color"></i>
+                        <span class="font-sm"> {{product.ratingsAverage}}</span>
+                    </div>
+                </div>
+                <button class="btn bg-main text-white w-100 my-2">+ Add</button>
+            </div>
+
+        </div>
+    </div>
+</section>

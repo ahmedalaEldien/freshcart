@@ -1,0 +1,71 @@
+<app-loader *ngIf="isDataarrive"></app-loader>
+<div id="sidBar">
+    <i id="icon" class="fa-solid fa-gears text-dark fs-5 sitting bg-main"></i>
+    <div class="saidBox ">
+        <h4>Choose Theme Color</h4>
+        <hr>
+        <div class="color d-flex flex-wrap">
+            <span class="boxColor bg-warning"></span>
+            <span class="boxColor bg-black"></span>
+            <span class="boxColor bg-info"></span>
+            <span class="boxColor bg-success"></span>
+            <span class="boxColor bg-danger"></span>
+            <span class="boxColor bg-primary"></span>
+            <span class="boxColor "></span>
+            <span class="boxColor "></span>
+            <span class="boxColor  "></span>
+            <span class="boxColor "></span>
+            <span class="boxColor  "></span>
+            <span class="boxColor "></span>
+            <span class="boxColor "></span>
+            <span class="boxColor "></span>
+            <span class="boxColor "></span>
+        </div>
+    </div>
+</div>
+<app-main-slider></app-main-slider>
+<app-category-slider></app-category-slider>
+
+
+
+<div class="w-75 mx-auto my-4">
+    <input [(ngModel)]="searchTerm" type="text" class="form-control " placeholder=" Search...................">
+</div>
+
+<section class="py-5">
+    <div class="row g-4">
+        <div class="col-md-3 "
+            *ngFor="let product of productsList|search:searchTerm| paginate: { itemsPerPage: 12, currentPage: page }">
+            <!-- heartColor -->
+            <div class="product p-3 cursor-pointer position-relative">
+                <div class="text-center position-absolute heart">
+                    <i *ngIf="!wishlistIds.includes(product._id)" class="fas fa-heart  fa-xl "
+                        (click)="addProductToWishList(product._id)"></i>
+                    <i *ngIf="wishlistIds.includes(product._id)" class="fas fa-heart heartColor  fa-xl "
+                        (click)="RemoveProductToWishList(product._id)"></i>
+                </div>
+                <div [routerLink]="['/Productdetails',product._id]">
+                    <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                    <h4 class="text-main font-sm">{{product.category.name}}</h4>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="h6 fw-semibold">{{product.title.split(' ').slice(0,2).join(' ')}}</h3>
+
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span class="font-sm ">{{product.price}}.EGP</span>
+                        <div>
+                            <i class="fa-solid fa-star rating-color"></i>
+                            <span class="font-sm"> {{product.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button (click)="addToCart(product._id)" class="btn bg-main text-white w-100 my-2">+ Add</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<pagination-controls class="text-center " (pageChange)="page = $event"></pagination-controls>

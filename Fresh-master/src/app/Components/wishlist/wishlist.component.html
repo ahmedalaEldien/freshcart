@@ -1,0 +1,35 @@
+<app-loader *ngIf="isDataarrive"></app-loader>
+
+<div *ngIf="errorMessage && WishList.length==0" class="alert alert-danger text-center my-5 py-5">
+    <p class="my-5 h3 fw-bolder">{{errorMessage}}</p>
+</div>
+
+<div *ngIf="!errorMessage && WishList.length>0">
+    <div class="row my-5 shadow py-2" *ngFor="let wish of WishList">
+        <div class="cursor-pointer">
+            <div class=" col-md-1" [routerLink]="['/Productdetails',wish.id]">
+                <img [src]="wish.imageCover" class="w-100" alt="">
+            </div>
+            <div class="col-md-11 d-flex justify-content-between align-items-center">
+                <div>
+                    <h4>{{wish.title}}</h4>
+                    <p class="fs-5"><span class="h4">price : </span> {{wish.price}} </p>
+                </div>
+
+                <span class="cursor-pointer btn btn-outline-danger position-relative"
+                    (click)="removeProductinwishlist(wish.id)">
+                    Remove Product
+                    <i class=" text-danger fas fa-trash"></i>
+
+                </span>
+            </div>
+        </div>
+        <div>
+            <button (click)="addToCart(wish.id)" class=" btn bg-main text-white mx-auto d-block">Add To Cart</button>
+
+        </div>
+
+    </div>
+
+
+</div>

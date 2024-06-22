@@ -1,0 +1,12 @@
+<h2>Popular Categories</h2>
+<owl-carousel-o [options]="customOptions">
+
+    <ng-container *ngFor="let category of CategoriesList">
+        <ng-template carouselSlide [id]="category._id">
+            <img height="150" [src]="category.image" [alt]="category.name" [title]="category.name"
+                class="w-100 imgsize">
+            <span class="font-sm text-main">{{category.name}}</span>
+        </ng-template>
+    </ng-container>
+
+</owl-carousel-o>

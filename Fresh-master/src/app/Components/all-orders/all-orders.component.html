@@ -1,0 +1,48 @@
+<app-loader *ngIf="isDataarrive"></app-loader>
+<div *ngFor="let order of ordersList">
+    <div class=" row my-5 shadow py-2 align-items-center" *ngFor="let item of order.cartItems">
+        <div class=" col-md-2 text-center">
+            <div>
+                <img [src]=" item.product.imageCover" class="w-100" alt="">
+                <h6 class="pt-2 fw-semibold">{{item.product.title.split(' ').slice(0,2).join(' ')}}</h6>
+            </div>
+        </div>
+        <div class="offset-1 col-md-4">
+            <div class="ispaid">
+                <span class="h6 "> is Paid:</span>
+                <i *ngIf="order.isPaid" class="fas fa-check-circle text-success"></i>
+                <i *ngIf="!order.isPaid" class="fas fa-circle-xmark text-danger"></i>
+            </div>
+            <div class="isdelivered">
+                <span class="h6 "> is Delivered:</span>
+                <i *ngIf="order.isDelivered" class="fas fa-check-circle text-success"></i>
+                <i *ngIf="!order.isDelivered" class="fas fa-circle-xmark text-danger"></i>
+            </div>
+            <div class="paymentMethod">
+                <p class="h6 "> Payment Method: <span class="bg-main text-white p-2 rounded">
+                        {{order.paymentMethodType}}</span> </p>
+
+            </div>
+            <div class="paymentMethod">
+                <p class="h6"> Price: <span> {{item.price}}</span></p>
+            </div>
+            <p class="h6 d-flex  align-items-center">Count:<span class="bg-main text-white p-2 rounded text-center">
+                    {{item.count}}</span></p>
+        </div>
+        <div class=" col-md-5 ">
+
+
+            <div class="d-flex align-items-center">
+                <span class="h4 me-2 p-2 bg-main text-white rounded">shippingAddress:</span>
+                <div>
+                    <p class="fs-4">Details: <span>{{order.shippingAddress.details}}</span> </p>
+                    <p class="fs-4">Phone: <span>{{order.shippingAddress.phone}}</span> </p>
+                    <p class="fs-4">City: <span>{{order.shippingAddress.city}}</span> </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="bg-main mx-auto w-75 text-center my-4 text-white fs-2 rounded fw-semibold"> total Price
+        is:{{order.totalOrderPrice}}</div>
+    <hr class="line">

@@ -1,0 +1,27 @@
+<app-loader *ngIf="isDataarrive"></app-loader>
+
+
+
+<section class=" my-5 py-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-3 " *ngFor="let brand of brandList">
+
+            <div class="product cursor-pointer p-3" [routerLink]="['/Productdetails',brand._id]">
+
+                <img height="250" [src]="brand.image" class="w-100" [alt]="brand.name">
+
+                <h4 class="text-main font-sm fw-semibold">{{brand.name}}</h4>
+
+                <div class="d-flex align-items-center justify-content-between">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

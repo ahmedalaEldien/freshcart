@@ -1,0 +1,40 @@
+<div class="my-5 w-75 mx-auto shadow rounded-5 p-4" style="background-image: url(assets/light-patten.svg);">
+
+    <h1 class="my-3">Login Now:</h1>
+    <div class="alert alert-danger" *ngIf="loginErrorMassage">{{loginErrorMassage}} </div>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm)">
+
+        <div class="mb-2">
+            <label for="email">Email:</label>
+            <input formControlName="email" id="email" class="form-control" type="email">
+            <div class="alert alert-danger mt-1"
+                *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors">
+                <p *ngIf="loginForm.get('email')?.errors?.['required']" class="p-1">Email Input Is Required</p>
+                <p *ngIf="loginForm.get('email')?.errors?.['email']" class="p-1">Please Enter Valid Email</p>
+
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="password">Password:</label>
+            <input formControlName="password" id="password" class="form-control" type="password">
+            <div class="alert alert-danger mt-1"
+                *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors">
+                <p *ngIf="loginForm.get('password')?.errors?.['required']" class="p-1">Password Input Is Required</p>
+                <p *ngIf="loginForm.get('password')?.errors?.['pattern']" class="p-1">Must started With upperCase
+                    letter and Minlength is 6 characters ,Maxlength is 10 characters</p>
+
+            </div>
+        </div>
+
+
+
+        <button [disabled]="loginForm.invalid" class="btn bg-main text-white d-block ms-auto ">
+            <span *ngIf="!isDataSended">Login</span>
+            <i *ngIf="isDataSended" class="fas fa-spin fa-spinner"></i>
+        </button>
+    </form>
+    <div>
+        <a [routerLink]="['/settings']" class=" text-main">Forgot My Password??</a>
+    </div>
+
+</div>

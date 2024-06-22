@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+:root {
+    --main-color: #0aad0a;
+    --light-color: #f0f3f2;
+    --shadow: rgba(145, 158, 171, .2) 0px 2px 4px -1px, rgba(145, 158, 171, .14) 0px 4px 5px 0px, rgba(145, 158, 171, .12) 0px 1px 10px 0px;
+    --font-family: 'Encode Sans Expanded', sans-serif;
+    --rating-color: #ffc908;
+}
+
+::selection {
+    background-color: var(--main-color);
+    color: white;
+}
+
+body {
+    font-family: var(--font-family) !important;
+}
+
+.rating-color {
+    color: var(--rating-color);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+a,
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.product:hover {
+    box-shadow: var(--shadow);
+    border: solid 1px var(--main-color);
+}
+
+.product .btn {
+    transition: transform 1s, opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.product:hover .btn {
+    opacity: 1;
+    transform: translateY(0%);
+
+}
+
+.font-sm {
+    font-size: 14px;
+}
+
+.text-main {
+    color: var(--main-color);
+}
+
+.bg-main {
+    background-color: var(--main-color) !important;
+}
+
+.bg-main-light {
+    background-color: var(--light-color) !important;
+}
+
+.active-Link {
+    color: #fff !important;
+    background-color: var(--main-color) !important;
+    border-radius: 5px !important;
+}
+
+.form-control:focus {
+
+    box-shadow: 0 0 0 0.25rem var(--main-color);
+}
+
+
+.paywidth {
+    width: 3%;
+}
+
+.Appwidth {
+    width: 15%;
+}
+
+.animation {
+    opacity: 1;
+    animation: opacity 0.5s alternate infinite;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+.ngx-pagination .current {
+
+    background: var(--main-color) !important;
+
+}
+
+
+/* ----------------------------------------- */
+
+.loader {
+    font-size: 48px;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #263238;
+    box-sizing: border-box;
+    text-shadow: 0 0 2px #FFF, 0 0 1px #FFF, 0 0 1px #FFF;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.loader::after {
+    content: 'Loading';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--main-color);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    animation: animloader 6s linear infinite;
+}
+
+@keyframes animloader {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/* --------------ScrollBar------------------- */
+
+
+
+
+#info {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+a {
+    color: #074E8C;
+}
+
+
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--main-color);
+    background-image: gradient(linear,
+            40% 0%,
+            75% 84%,
+            from(#4D9C41),
+            to(var(--main-color)),
+            color-stop(.6, #54DE5D))
+}
+
+/* --------------------------- */
+
+.arrowup {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    color: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.line {
+    margin: 6rem 0;
+    color: black;
+    border: 0;
+    border-top: 5px solid;
+    opacity: .25;
+
+}
+
+.product {
+    overflow: hidden;
+}
+
+.heart {
+    top: 5px;
+    right: -50px;
+    transition: right 0.7s;
+}
+
+.product:hover .heart {
+
+    right: 5px;
+}
+.heartColor{
+    color: rgb(203, 6, 6);
+}

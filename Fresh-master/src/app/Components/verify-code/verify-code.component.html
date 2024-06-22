@@ -1,0 +1,25 @@
+<div class="my-5">
+    <div class="py-5 shadow rounded-3 " style="background-image: url('assets/light-patten.svg');">
+        <div class="m-3">
+
+            <form action="" [formGroup]="verifycode" (ngSubmit)="sendCode(verifycode)">
+
+                <div class="mb-2">
+                    <label for="resetCode" class="fw-semibold">Enter The Verification Code :</label>
+                    <input formControlName="resetCode" id="resetCode" class="form-control" type="tel">
+                    <p class=" p-1">The verification code Sent to your Email </p>
+
+                    <div class="alert alert-danger mt-1"
+                        *ngIf="verifycode.get('resetCode')?.touched && verifycode.get('resetCode')?.errors">
+                        <p *ngIf="verifycode.get('resetCode')?.errors?.['required']" class="p-1"> Input Is Required
+                        </p>
+
+                    </div>
+                    <button [disabled]="verifycode.invalid" class="btn bg-main text-white d-block ms-auto mt-3">VeriFy
+                        Code</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
